@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour {
 
     public Vector2 Gravity = new Vector2(0, 10);
 
+    public int ID;
+
     private Vector2 Velocity;
     private bool grounded = true;
     private Rigidbody2D myRigidbody;
