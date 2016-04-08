@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour {
     private Vector2 Velocity;
     private bool grounded = true;
     private Rigidbody2D myRigidbody;
+	public int direction = 1;
+	public GameObject spritePivot;
 
 	// Use this for initialization
 	void Start () {
@@ -35,12 +37,20 @@ public class PlayerMovement : MonoBehaviour {
 
         velocity = UpdateVelocity(velocity, inputX, inputY);
 
+		if (inputX != 0) {
+			direction = inputX > 0 ? 1 : -1;
+		}
+		spritePivot.transform.localScale = new Vector2 (direction,spritePivot.transform.localScale.y);
         if(inputJump && grounded){
             velocity = DoJump(velocity);
         }
 
         myRigidbody.velocity = velocity;
         Velocity = velocity;
+
+		if (Input.GetKey (KeyCode.R)) {
+			Application.LoadLevel(Application.loadedLevel);
+		}
 	}
 
     private Vector2 UpdateVelocity(Vector2 velocity, float inputX, float inputY) {
@@ -57,4 +67,10 @@ public class PlayerMovement : MonoBehaviour {
         velocity += new Vector2(0, JumpForce);
         return velocity;
     }
+
+	void OnCollisionEnter2D(Collision2D coll) {
+		if (coll.gameObject.tag == "Leek") {
+			Destroy(coll.gameObject);
+		}
+	}
 }
