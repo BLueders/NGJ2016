@@ -4,8 +4,6 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour {
 
-    public bool HasPhysics = true;
-
     public float MaxHorizontalSpeed = 5;
     public float MaxVerticalSpeed = 5;
 
@@ -28,12 +26,9 @@ public class PlayerMovement : MonoBehaviour {
 	void Update () {
 
         Vector2 velocity = myRigidbody.velocity;
-        if(!HasPhysics){
-            velocity = Velocity;
-        }
 
-        float inputX = Input.GetAxis("Horizontal");
-        float inputY = Input.GetAxis("Vertical");
+		float inputX = Input.GetAxisRaw("Horizontal");
+		float inputY = Input.GetAxisRaw("Vertical");
         bool inputJump = Input.GetButtonDown("Jump");
 
         velocity = UpdateVelocity(velocity, inputX, inputY);
@@ -50,7 +45,10 @@ public class PlayerMovement : MonoBehaviour {
         velocity += new Vector2(inputX *HorizontalAcceleration * Time.deltaTime, 0);
         velocity -= Gravity * Time.deltaTime;
         velocity = new Vector2(Mathf.Clamp(velocity.x, - MaxHorizontalSpeed, MaxHorizontalSpeed), Mathf.Clamp(velocity.y, -MaxVerticalSpeed, MaxVerticalSpeed));
-        return velocity;
+		if (inputX == 0) {
+			velocity = new Vector2 (0, velocity.y);
+		}
+		return velocity;
     }
 
     private Vector2 DoJump(Vector2 velocity){
