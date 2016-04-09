@@ -592,7 +592,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -261, y: 192}
+  m_AnchoredPosition: {x: -212, y: 154}
   m_SizeDelta: {x: 119, y: 58}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1281140086
@@ -928,7 +928,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 248, y: 192}
+  m_AnchoredPosition: {x: 248, y: 154}
   m_SizeDelta: {x: 119, y: 58}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1542051716
@@ -1055,14 +1055,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 125452, guid: 1afdc455b4f764dc8b205eb167351307, type: 2}
-      propertyPath: m_Name
-      value: Player (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 11413896, guid: 1afdc455b4f764dc8b205eb167351307, type: 2}
       propertyPath: text
       value: 
       objectReference: {fileID: 1542051716}
+    - target: {fileID: 125452, guid: 1afdc455b4f764dc8b205eb167351307, type: 2}
+      propertyPath: m_Name
+      value: Player (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415350, guid: 1afdc455b4f764dc8b205eb167351307, type: 2}
+      propertyPath: PlayerID
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1afdc455b4f764dc8b205eb167351307, type: 2}
   m_IsPrefabParent: 0

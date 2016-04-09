@@ -13,6 +13,7 @@ public class ThrowComponent : MonoBehaviour {
 
     public Vector2 ThrowDirection;
     public float ThrowForce;
+	public float ThrowMovementFactor;
 
     PlayerMovement movement;
 
@@ -71,8 +72,8 @@ public class ThrowComponent : MonoBehaviour {
                 holdingObject = col.gameObject.GetComponent<Earth>().HarvestLeek();
                 if(holdingObject != null) {
                     canThrow = true;
+					break;
                 }
-                break;
             }
             if (col.gameObject.tag == "WaterCan") {
                 holdingObject = col.gameObject;
@@ -86,7 +87,7 @@ public class ThrowComponent : MonoBehaviour {
         if (holdingObject == null || !canThrow)
             return;
         Rigidbody2D leekRigidbody = holdingObject.GetComponent<Rigidbody2D>();
-        Vector3 throwVelocity = ThrowDirection.normalized * ThrowForce + movement.Velocity;
+		Vector3 throwVelocity = ThrowDirection.normalized * ThrowForce + ThrowMovementFactor*new Vector2(Mathf.Abs(movement.Velocity.x),movement.Velocity.y);
         throwVelocity.x *= movement.Direction;
         leekRigidbody.velocity = throwVelocity;
         leekRigidbody.isKinematic = false;
