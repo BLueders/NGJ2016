@@ -42,6 +42,7 @@ MonoBehaviour:
   ExplosionForcePerLevel: 20
   ExplosionRadiusPerLevel: 0.2
   ExplosionDamagePerLevel: 1
+  Timer: 2
   Level: 0
 --- !u!1001 &100100000
 Prefab:
