@@ -33,7 +33,7 @@ public class LeekExplosion : MonoBehaviour {
                 col.GetComponent<PlayerHealth>().ReceiveDamage(ExplosionDamagePerLevel * Level);
                 Vector2 direction = col.gameObject.transform.position - transform.position;
                 direction.Normalize();
-                col.GetComponent<PlayerMovement>().AddExternalFoce(ExplosionForcePerLevel * Level * direction);
+                //col.GetComponent<PlayerMovement>().AddExternalFoce(ExplosionForcePerLevel * Level * direction);
             }
         }
         DestroyObject();
