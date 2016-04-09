@@ -22,7 +22,7 @@ public class LeekExplosion : MonoBehaviour {
     public void GoBoom(){
 
         SpriteAnimator animator = GetComponent<SpriteAnimator>();
-        animator.PlayOneShot(GetComponent<SpriteRenderer>(), sprites, 4);
+        animator.PlayOneShot(GetComponent<SpriteRenderer>(), sprites, 8);
 
 		transform.localScale = transform.localScale * Level * ExplosionRadiusPerLevel;
 

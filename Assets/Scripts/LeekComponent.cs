@@ -78,7 +78,7 @@ public class LeekComponent : MonoBehaviour {
         Destroy(gameObject);
         GameObject explosionObject = Instantiate<GameObject>(Explosion);
         explosionObject.transform.position = transform.position;
-        explosionObject.transform.rotation = transform.rotation;
+        explosionObject.transform.rotation = Quaternion.identity;
         LeekExplosion leekExplosion = explosionObject.GetComponent<LeekExplosion>();
         leekExplosion.Level = LeekLevel;
         leekExplosion.GoBoom();
