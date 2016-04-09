@@ -51,6 +51,7 @@ public class Earth : MonoBehaviour {
 			leek = (GameObject)(GameObject.Instantiate (leekPrefab, transform.localPosition+new Vector3(0,0.2f,0), Quaternion.identity));
 		}
 		leekLevel++;
+		leek.GetComponent<LeekComponent> ().LeekLevel++;
 		leek.transform.position = transform.localPosition + new Vector3 (0, 0.2f*leekLevel, 0);
 		needsWater = true;
 	}
