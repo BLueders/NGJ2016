@@ -92,7 +92,7 @@ MonoBehaviour:
   needsWater: 1
   leekPrefab: {fileID: 127392, guid: ddc1ffe0c55984ea0bcda25c8aad5da6, type: 2}
   leek: {fileID: 0}
-  WaterPerSecond: 1
+  WaterPerSecond: 1.3
   WaterPerLevel: 1
 --- !u!1001 &100100000
 Prefab:

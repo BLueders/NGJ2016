@@ -8,10 +8,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 418364}
-  - 61: {fileID: 6192076}
   - 50: {fileID: 5011914}
   - 114: {fileID: 11439672}
   - 212: {fileID: 21226650}
+  - 60: {fileID: 6061296}
   m_Layer: 9
   m_Name: Leek
   m_TagString: Leek
@@ -41,15 +41,15 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.02
-  m_GravityScale: 1
+  m_AngularDrag: 0.01
+  m_GravityScale: 2
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &6192076
-BoxCollider2D:
+--- !u!60 &6061296
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -60,8 +60,12 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Points:
+    m_Paths:
+    - - {x: -0.15662919, y: 0.9863198}
+      - {x: -0.15662919, y: -0.24701361}
+      - {x: 0.07670416, y: -0.24701361}
+      - {x: 0.07670416, y: 0.9863198}
 --- !u!114 &11439672
 MonoBehaviour:
   m_ObjectHideFlags: 1

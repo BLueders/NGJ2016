@@ -32,7 +32,6 @@ public class Earth : MonoBehaviour {
         }
         leek.transform.rotation = originalOrientation * Quaternion.AngleAxis(Random.Range(-10f, 10f), Vector3.forward);
         leek.LeekLevel = (int) (currentWater/WaterPerLevel);
-        Debug.Log(currentWater);
 	}
 
 	public GameObject HarvestLeek() {

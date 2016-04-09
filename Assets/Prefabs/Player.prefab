@@ -290,6 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHorizontalSpeed: 6
+  CurrentMaxHorizontalSpeed: 5
   MaxVerticalSpeed: 10.58
   HorizontalAcceleration: 200
   DizziHorizontalAcceleration: 0.5
@@ -342,9 +343,12 @@ MonoBehaviour:
   holdingObject: {fileID: 0}
   canThrow: 1
   leek: {fileID: 127392, guid: ddc1ffe0c55984ea0bcda25c8aad5da6, type: 2}
-  ThrowDirection: {x: 0.7, y: 1}
-  ThrowForce: 20
-  ThrowMovementFactor: 0
+  ThrowDirection: {x: 0.5, y: 1}
+  ThrowForce: 10
+  ThrowMovementFactor: 0.2
+  MaxThrowCharge: 2
+  ThrowChargePerSecond: 1.2
+  InitialThrowCharge: 1
 --- !u!212 &21253988
 SpriteRenderer:
   m_ObjectHideFlags: 1

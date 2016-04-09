@@ -21,6 +21,10 @@ public class LeekExplosion : MonoBehaviour {
 
     public void GoBoom(){
 
+        if(Level == 0){
+            Level = 0.5f;
+        }
+
         SpriteAnimator animator = GetComponent<SpriteAnimator>();
         animator.PlayOneShot(GetComponent<SpriteRenderer>(), sprites, 8);
 

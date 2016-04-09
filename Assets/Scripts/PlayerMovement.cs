@@ -5,6 +5,7 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 
     public float MaxHorizontalSpeed = 5;
+    public float CurrentMaxHorizontalSpeed = 5;
     public float MaxVerticalSpeed = 5;
 
     public float HorizontalAcceleration = 5;
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        CurrentMaxHorizontalSpeed = MaxVerticalSpeed;
         myRigidbody = GetComponent<Rigidbody2D>();
         originalAcceleration = HorizontalAcceleration;
 		int playerId = GetComponent<PlayerCharacterInputController> ().PlayerID;
@@ -108,7 +110,7 @@ public class PlayerMovement : MonoBehaviour {
     private Vector2 UpdateVelocity(Vector2 velocity, float inputX, float inputY) {
         velocity += new Vector2(inputX *HorizontalAcceleration * Time.deltaTime, 0);
         velocity -= Gravity * Time.deltaTime;
-        velocity = new Vector2(Mathf.Clamp(velocity.x, - MaxHorizontalSpeed, MaxHorizontalSpeed), Mathf.Clamp(velocity.y, -MaxVerticalSpeed, MaxVerticalSpeed));
+        velocity = new Vector2(Mathf.Clamp(velocity.x, - CurrentMaxHorizontalSpeed, CurrentMaxHorizontalSpeed), Mathf.Clamp(velocity.y, -MaxVerticalSpeed, MaxVerticalSpeed));
 		if (inputX == 0) {
 			velocity = new Vector2 (0, velocity.y);
 		}

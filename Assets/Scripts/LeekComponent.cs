@@ -63,9 +63,9 @@ public class LeekComponent : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject != owner) {
-            if (other.gameObject.tag == "Player" || other.gameObject.tag == "Ground") {
+    void OnCollisionEnter2D(Collision2D col) {
+        if (col.gameObject != owner) {
+            if (col.gameObject.tag == "Player" || col.gameObject.tag == "Ground") {
                 Explode();
             }
         }

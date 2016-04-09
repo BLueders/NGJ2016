@@ -15,6 +15,14 @@ public class ThrowComponent : MonoBehaviour {
     public float ThrowForce;
 	public float ThrowMovementFactor;
 
+    public float MaxThrowCharge;
+    public float ThrowChargePerSecond;
+    public float InitialThrowCharge;
+    private float currentThrowCharge;
+
+    bool chargeThrowMode = false;
+    float pickupdelay;
+
     PlayerMovement movement;
 
     // Use this for initialization
@@ -23,14 +31,32 @@ public class ThrowComponent : MonoBehaviour {
     }
 
     public void HandleAction1(bool buttonPressed, bool buttonDown, bool buttonUp) {
+        movement.CurrentMaxHorizontalSpeed = movement.MaxVerticalSpeed; 
         if (buttonDown) {
-            DoAction();
+            if (holdingObject == null) {
+                pickupdelay = 0;
+                PickUp();
+            }
         } else if (buttonPressed) {
             if (holdingObject != null) {
                 if (holdingObject.tag == "WaterCan") {
+                    movement.CurrentMaxHorizontalSpeed = 1;
                     WaterAction();
                 }
+                if (holdingObject.tag == "Leek" && chargeThrowMode && currentThrowCharge != MaxThrowCharge) {
+                    holdingObject.transform.rotation = holdingObject.transform.rotation * Quaternion.AngleAxis(Random.Range(-10f, 10f), Vector3.forward);
+                    currentThrowCharge += Time.deltaTime * ThrowChargePerSecond;
+                    currentThrowCharge = Mathf.Clamp(currentThrowCharge, InitialThrowCharge, MaxThrowCharge);
+                }
             }
+        } 
+        if(buttonUp){
+            if (holdingObject != null && holdingObject.tag == "Leek" && chargeThrowMode) {
+                Throw();
+                chargeThrowMode = false;
+            }
+            if(canThrow)
+                chargeThrowMode = true;
         }
     }
 
@@ -42,18 +68,11 @@ public class ThrowComponent : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        pickupdelay += Time.deltaTime;
         if (holdingObject != null) {
 			holdingObject.transform.position = holdPivot.transform.position+Vector3.back;
 			holdingObject.transform.localScale = holdPivot.transform.lossyScale;
 			holdingObject.transform.eulerAngles = new Vector3 (0,0,0);
-        }
-    }
-
-    void DoAction() {
-        if (holdingObject != null) {
-            Throw();
-        } else {
-            PickUp();
         }
     }
 
@@ -91,11 +110,12 @@ public class ThrowComponent : MonoBehaviour {
         if (holdingObject == null || !canThrow)
             return;
         Rigidbody2D leekRigidbody = holdingObject.GetComponent<Rigidbody2D>();
-		Vector3 throwVelocity = ThrowDirection.normalized * ThrowForce + ThrowMovementFactor*new Vector2(Mathf.Abs(movement.Velocity.x),movement.Velocity.y);
+        Vector3 throwVelocity = ThrowDirection.normalized * ThrowForce * currentThrowCharge + ThrowMovementFactor*new Vector2(Mathf.Abs(movement.Velocity.x),movement.Velocity.y);
         throwVelocity.x *= movement.Direction;
         leekRigidbody.velocity = throwVelocity;
+        leekRigidbody.angularVelocity = Random.Range(140,180) * currentThrowCharge * movement.Direction;
         leekRigidbody.isKinematic = false;
-        holdingObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        holdingObject.GetComponent<Collider2D>().isTrigger = false;
         LeekComponent leek = holdingObject.GetComponent<LeekComponent>();
         if(leek != null){
             leek.IsActive = true;
@@ -103,6 +123,7 @@ public class ThrowComponent : MonoBehaviour {
         }
         holdingObject = null;
         canThrow = false;
+        currentThrowCharge = InitialThrowCharge;
     }
 
     void Drop() {

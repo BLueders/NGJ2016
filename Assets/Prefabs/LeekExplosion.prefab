@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExplosionForcePerLevel: 20
-  ExplosionRadiusPerLevel: 0.5
+  ExplosionRadiusPerLevel: 0.8
   ExplosionDamagePerLevel: 1
   Timer: 2
   sprites:
