@@ -28,7 +28,7 @@ public class Earth : MonoBehaviour {
 	public void WaterIt() {
         currentWater += WaterPerSecond * Time.deltaTime;
         if(leek == null){
-            leek = (GameObject.Instantiate (leekPrefab, transform.localPosition+new Vector3(0,0.2f,0), Quaternion.identity) as GameObject).GetComponent<LeekComponent>();
+            leek = (GameObject.Instantiate (leekPrefab, transform.localPosition+new Vector3(0,0.2f,6), Quaternion.identity) as GameObject).GetComponent<LeekComponent>();
         }
         leek.transform.rotation = originalOrientation * Quaternion.AngleAxis(Random.Range(-10f, 10f), Vector3.forward);
         leek.LeekLevel = (int) (currentWater/WaterPerLevel);
