@@ -15,8 +15,8 @@ public class PlayerCharacterActions : PlayerActionSet
     public PlayerTwoAxisAction Aim;
     public PlayerTwoAxisAction Move;
     public PlayerAction Jump;
-    public PlayerAction Crouch;
-    public PlayerAction Walk;
+    public PlayerAction PickUp;
+    public PlayerAction Shoot;
     public PlayerAction Dash;
     public PlayerAction PrimaryAttack;
     public PlayerAction SecondaryAttack;
@@ -39,8 +39,8 @@ public class PlayerCharacterActions : PlayerActionSet
 
         // Actions
         Jump = CreatePlayerAction("Jump");
-        Crouch = CreatePlayerAction("Crouch");
-        Walk = CreatePlayerAction("Walk");
+        PickUp = CreatePlayerAction("Crouch");
+        Shoot = CreatePlayerAction("Walk");
         Dash = CreatePlayerAction("Dash");
         PrimaryAttack = CreatePlayerAction("Primary Attack");
         SecondaryAttack = CreatePlayerAction("Secondary Attack");
@@ -82,9 +82,9 @@ public class PlayerCharacterActions : PlayerActionSet
 
         // Actions
         actions.Jump.AddDefaultBinding( Key.Space );
-        actions.Crouch.AddDefaultBinding( Key.C );
-        actions.Crouch.AddDefaultBinding( Key.LeftControl );
-        actions.Walk.AddDefaultBinding( Key.LeftShift );
+        actions.PickUp.AddDefaultBinding( Key.C );
+        actions.PickUp.AddDefaultBinding( Key.LeftControl );
+        actions.Shoot.AddDefaultBinding( Key.LeftShift );
         actions.Dash.AddDefaultBinding( Mouse.MiddleButton );
         actions.PrimaryAttack.AddDefaultBinding( Mouse.LeftButton );
         actions.SecondaryAttack.AddDefaultBinding( Mouse.RightButton );
@@ -110,8 +110,8 @@ public class PlayerCharacterActions : PlayerActionSet
         
         // Actions
         actions.Jump.AddDefaultBinding( InputControlType.Action1 );
-        actions.Crouch.AddDefaultBinding( InputControlType.Action2 );
-        actions.Walk.AddDefaultBinding( InputControlType.Action3 );
+        actions.PickUp.AddDefaultBinding( InputControlType.Action2 );
+        actions.Shoot.AddDefaultBinding( InputControlType.Action3 );
         actions.Dash.AddDefaultBinding( InputControlType.Action4 );
         actions.PrimaryAttack.AddDefaultBinding( InputControlType.LeftBumper );
         actions.SecondaryAttack.AddDefaultBinding( InputControlType.RightBumper );

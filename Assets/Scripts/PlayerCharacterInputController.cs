@@ -12,11 +12,14 @@ public class PlayerCharacterInputController : MonoBehaviour
     public PlayerMovement playerMovement { get; private set; }
     public ThrowComponent throwComponent { get; private set; }
     public PlayerHealth playerHealth { get; private set; }
+    public PlayerCharacterActions playerCharacterActions { get; private set; }
 
     public Transform aimPivot;
     Vector3 moveDirection;
     bool mouseEnabled;
     bool applicationHasFocus = true;
+
+    InputDevice inputDevice;
 
     void Awake()
     {
@@ -27,15 +30,24 @@ public class PlayerCharacterInputController : MonoBehaviour
 
     void Start()
     {
-
+        if(playerCharacterActions == null)
+        {
+            playerCharacterActions = PlayerCharacterActions.GetDefaultBindings(true, true);
+            AttachInputDevice(playerCharacterActions);
+            playerCharacterActions.Device = inputDevice;
+        }
     }
-    
+
+    void AttachInputDevice(PlayerCharacterActions actions){
+        inputDevice = (InputManager.Devices.Count > PlayerID) ? InputManager.Devices[PlayerID] : null;
+        actions.Device = inputDevice;
+    }
+
     void Update()
     {
-        var inputDevice = (InputManager.Devices.Count > PlayerID) ? InputManager.Devices[PlayerID] : null;
-
         if(inputDevice == null){
             ErrorHelper.DisplayError(ErrorMessage.PlayerDisconnected[PlayerID]);
+            AttachInputDevice(playerCharacterActions);
         }
 
         if(playerHealth.IsAlive()) // Only allow input when alive
@@ -53,9 +65,9 @@ public class PlayerCharacterInputController : MonoBehaviour
     void HandleMove(InputDevice inputDevice)
     {
         // Read inputs
-        float x = inputDevice.Direction.X;
-        float y = inputDevice.Direction.Y;
-        bool jump = inputDevice.Action1.WasPressed;
+        float x = playerCharacterActions.Move.X;
+        float y = playerCharacterActions.Move.Y;
+        bool jump = playerCharacterActions.Jump.WasPressed;
 
         playerMovement.Move(x,y,jump);
     }
@@ -86,11 +98,11 @@ public class PlayerCharacterInputController : MonoBehaviour
     void HandleAttack(InputDevice inputDevice)
     {
         // Read inputs
-        bool action1Pressed = inputDevice.Action2.IsPressed;;
-        bool action1Down = !inputDevice.Action2.WasPressed;
+        bool action1Pressed = playerCharacterActions.PickUp.IsPressed;
+        bool action1Down = playerCharacterActions.PickUp.WasPressed;
 
-        bool action2Pressed = inputDevice.Action3.IsPressed;
-        bool action2Down = !inputDevice.Action3.WasPressed;
+        bool action2Pressed = playerCharacterActions.Shoot.IsPressed;
+        bool action2Down = playerCharacterActions.Shoot.WasPressed;
 
         throwComponent.HandleAction1(action1Pressed, action1Down);
         throwComponent.HandleAction2(action2Pressed, action2Down);
