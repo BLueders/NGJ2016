@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LeekComponent : MonoBehaviour {
+public class LeekComponent : HoldingObject {
 
     public bool IsActive = false;
     public float Timer = 5;
@@ -15,13 +15,14 @@ public class LeekComponent : MonoBehaviour {
     }
     LeekType type;
 
+
+
     SpriteRenderer spriteRenderer;
 
     public GameObject Explosion;
     public GameObject LevelUpAnimation;
 
-    [HideInInspector]
-    public GameObject owner;
+
 
     int _leekLevel;
 
@@ -38,6 +39,7 @@ public class LeekComponent : MonoBehaviour {
     }
 
     void Start(){
+        HoldingType = HoldingObjectType.Leek;
         type = (LeekType) Random.Range(0,2);
         spriteRenderer = GetComponent<SpriteRenderer>();
         if(type == LeekType.Red)

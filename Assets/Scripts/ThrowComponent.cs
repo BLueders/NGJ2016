@@ -110,7 +110,10 @@ public class ThrowComponent : MonoBehaviour {
         if (holdingObject == null || !canThrow)
             return;
         Rigidbody2D leekRigidbody = holdingObject.GetComponent<Rigidbody2D>();
-        Vector3 throwVelocity = ThrowDirection.normalized * ThrowForce * currentThrowCharge + ThrowMovementFactor*new Vector2(Mathf.Abs(movement.Velocity.x),movement.Velocity.y);
+
+        Vector2 actualThrowDirection = new Vector2((1-currentThrowCharge/MaxThrowCharge), currentThrowCharge/MaxThrowCharge);
+
+        Vector3 throwVelocity = actualThrowDirection.normalized * ThrowForce + ThrowMovementFactor*new Vector2(Mathf.Abs(movement.Velocity.x),movement.Velocity.y);
         throwVelocity.x *= movement.Direction;
         leekRigidbody.velocity = throwVelocity;
         leekRigidbody.angularVelocity = Random.Range(140,180) * currentThrowCharge * movement.Direction;

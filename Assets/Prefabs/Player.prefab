@@ -238,7 +238,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 125452}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c1b8273af7dcb2a4ab4b63b1131a6dd8, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -294,7 +294,7 @@ MonoBehaviour:
   MaxVerticalSpeed: 10.58
   HorizontalAcceleration: 200
   DizziHorizontalAcceleration: 0.5
-  JumpForce: 20
+  JumpForce: 45
   Gravity: {x: 0, y: 50}
   ID: 0
   Direction: 1
@@ -344,11 +344,11 @@ MonoBehaviour:
   canThrow: 1
   leek: {fileID: 127392, guid: ddc1ffe0c55984ea0bcda25c8aad5da6, type: 2}
   ThrowDirection: {x: 0.5, y: 1}
-  ThrowForce: 10
+  ThrowForce: 20
   ThrowMovementFactor: 0.2
   MaxThrowCharge: 2
-  ThrowChargePerSecond: 1.2
-  InitialThrowCharge: 1
+  ThrowChargePerSecond: 1
+  InitialThrowCharge: 0
 --- !u!212 &21253988
 SpriteRenderer:
   m_ObjectHideFlags: 1
