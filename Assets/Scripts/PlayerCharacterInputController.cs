@@ -52,17 +52,12 @@ public class PlayerCharacterInputController : MonoBehaviour
 
         if(playerHealth.IsAlive()) // Only allow input when alive
         {
-            HandleMove(inputDevice);
-        }
-
-        if(playerHealth.IsAlive()) // Only allow input when alive
-        {
-            //HandleAim();
-            HandleAttack(inputDevice);
+            HandleMove();
+            HandleActions();
         }
     }
 
-    void HandleMove(InputDevice inputDevice)
+    void HandleMove()
     {
         // Read inputs
         float x = playerCharacterActions.Move.X;
@@ -95,16 +90,16 @@ public class PlayerCharacterInputController : MonoBehaviour
         }
     }
     */
-    void HandleAttack(InputDevice inputDevice)
+    void HandleActions()
     {
         // Read inputs
         bool action1Pressed = playerCharacterActions.PickUp.IsPressed;
         bool action1Down = playerCharacterActions.PickUp.WasPressed;
-		bool action1Up = playerCharacterActions.Shoot.WasReleased;
+        bool action1Up = playerCharacterActions.PickUp.WasReleased;
 
-        bool action2Pressed = playerCharacterActions.Shoot.IsPressed;
-        bool action2Down = playerCharacterActions.Shoot.WasPressed;
-		bool action2Up = playerCharacterActions.Shoot.WasReleased;
+        bool action2Pressed = playerCharacterActions.Drop.IsPressed;
+        bool action2Down = playerCharacterActions.Drop.WasPressed;
+        bool action2Up = playerCharacterActions.Drop.WasReleased;
 
 		throwComponent.HandleAction1(action1Pressed, action1Down, action1Up);
 		throwComponent.HandleAction2(action2Pressed, action2Down, action2Up);

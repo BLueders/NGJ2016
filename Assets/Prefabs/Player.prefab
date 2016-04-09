@@ -243,8 +243,8 @@ MonoBehaviour:
   holdingObject: {fileID: 0}
   canThrow: 1
   leek: {fileID: 127392, guid: ddc1ffe0c55984ea0bcda25c8aad5da6, type: 2}
-  ThrowDirection: {x: 0, y: 0}
-  ThrowForce: 0
+  ThrowDirection: {x: 1, y: 1}
+  ThrowForce: 25
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

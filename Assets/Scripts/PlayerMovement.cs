@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public int ID;
 
-    private Vector2 Velocity;
+    public Vector2 Velocity {get; private set;}
     private bool grounded = true;
     private Rigidbody2D myRigidbody;
 	public int Direction = 1;
@@ -58,6 +58,11 @@ public class PlayerMovement : MonoBehaviour {
     public void Move (float inputX, float inputY, bool inputJump) {
 
         Vector2 velocity = myRigidbody.velocity;
+        Velocity = velocity;
+
+        if(!HasControl){
+            return;
+        }
 
         velocity = UpdateVelocity(velocity, inputX, inputY);
 
@@ -70,7 +75,7 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         myRigidbody.velocity = velocity;
-        Velocity = velocity;
+
 
 		if (Input.GetKey (KeyCode.R)) {
 			Application.LoadLevel(Application.loadedLevel);

@@ -14,9 +14,11 @@ public class ThrowComponent : MonoBehaviour {
     public Vector2 ThrowDirection;
     public float ThrowForce;
 
+    PlayerMovement movement;
+
     // Use this for initialization
     void Start() {
-	
+        movement = GetComponent<PlayerMovement>();
     }
 
     public void HandleAction1(bool buttonPressed, bool buttonDown, bool buttonUp) {
@@ -32,7 +34,9 @@ public class ThrowComponent : MonoBehaviour {
     }
 
     public void HandleAction2(bool buttonPressed, bool buttonDown, bool buttonUp) {
-        Drop();
+        if(buttonDown){
+            Drop();
+        }
     }
 
     // Update is called once per frame
@@ -53,7 +57,10 @@ public class ThrowComponent : MonoBehaviour {
     void WaterAction() {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1);
         foreach (Collider2D col in colliders) {
-            col.gameObject.GetComponent<Earth>().WaterIt();
+            
+            Earth earth = col.gameObject.GetComponent<Earth>();
+            if(earth)
+                earth.WaterIt();
         }
     }
 
@@ -78,7 +85,7 @@ public class ThrowComponent : MonoBehaviour {
     void Throw() {
         if (holdingObject == null || !canThrow)
             return;
-        holdingObject.GetComponent<Rigidbody2D>().velocity = ThrowDirection * GetComponent<PlayerMovement>().Direction * ThrowForce;
+        holdingObject.GetComponent<Rigidbody2D>().velocity = ThrowDirection * movement.Direction * ThrowForce;
         holdingObject.GetComponent<Rigidbody2D>().isKinematic = false;
         holdingObject.GetComponent<BoxCollider2D>().isTrigger = false;
         LeekComponent leek = holdingObject.GetComponent<LeekComponent>();
@@ -91,8 +98,12 @@ public class ThrowComponent : MonoBehaviour {
     }
 
     void Drop() {
-        if (holdingObject == null)
+        if (holdingObject == null || holdingObject.tag != "WaterCan")
             return;
+        Rigidbody2D holdingRigidBody = holdingObject.GetComponent<Rigidbody2D>();
+        if(holdingRigidBody){
+            holdingRigidBody.velocity = movement.Velocity;
+        }
         holdingObject = null;
         canThrow = false;
     }
