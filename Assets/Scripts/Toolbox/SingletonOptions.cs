@@ -7,7 +7,7 @@ using System.Collections;
 [System.AttributeUsage(System.AttributeTargets.Class)]
 public class SingletonOptions : System.Attribute
 {
-    public bool DontDestroyOnLoad = false;
+    public bool DontDestroyOnLoad = true;
     public bool CreateInstanceAutomatically = true;
 
     public SingletonOptions() {

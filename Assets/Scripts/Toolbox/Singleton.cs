@@ -41,10 +41,13 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     
                     if (FindObjectsOfType(typeof(T)).Length > 1)
                     {
-                        Debug.LogErrorFormat("[Singleton] Something went really wrong - there should never be more than 1 singleton! Reopening the scene might fix it.");
                         foreach(var obj in FindObjectsOfType(typeof(T)))
                         {
-                            Debug.LogErrorFormat("Multiple singletons of type {0} detected. Found on {1}", typeof(T).ToString(), obj);
+                            Debug.Log(string.Format("Multiple singletons of type {0} detected. Found on {1}", typeof(T).ToString(), obj));
+                            if((T)obj != _instance && singletonOptions.DontDestroyOnLoad == true) {
+                                Debug.Log("Destroying: " + obj); 
+                                Destroy(((T)obj).gameObject);
+                            }
                         }
                         return _instance;
                     }
@@ -78,17 +81,5 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     }
     
     private static bool applicationIsQuitting = false;
-
-    /// <summary>
-    /// When Unity quits, it destroys objects in a random order.
-    /// In principle, a Singleton is only destroyed when application quits.
-    /// If any script calls Instance after it have been destroyed, 
-    ///   it will create a buggy ghost object that will stay on the Editor scene
-    ///   even after stopping playing the Application. Really bad!
-    /// So, this was made to be sure we're not creating that buggy ghost object.
-    /// </summary>
-    public void OnDestroy()
-    {
-        applicationIsQuitting = true;
-    }
+ 
 }

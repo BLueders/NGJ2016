@@ -11,6 +11,8 @@ public class GameManager : Singleton<GameManager> {
 
     PlayerCharacterActions actions;
 
+    float timeSinceLastSwitch = 0;
+
     void Start(){
         actions = PlayerCharacterActions.GetDefaultBindings(true,true);
         Time.timeScale = 0;
@@ -21,16 +23,18 @@ public class GameManager : Singleton<GameManager> {
         State = GameState.MainMenu;
     }
 
-    public void Upate(){
-        var inputDevice = InputManager.Devices[0];
+    void Update(){
+        timeSinceLastSwitch += Time.unscaledDeltaTime;
+
+        var inputDevice = InputManager.Devices.Count > 0 ? InputManager.Devices[0] : null;
         bool anyButton = false;
         if(inputDevice != null){
             anyButton = inputDevice.AnyButton.WasPressed;
         }
         anyButton = anyButton || Input.anyKeyDown;
-
-        if(anyButton)
+        if(anyButton && timeSinceLastSwitch > 1)
         {
+            timeSinceLastSwitch = 0;
             switch(State){
                 case GameState.MainMenu:
                     StartGame();
@@ -78,10 +82,6 @@ public class GameManager : Singleton<GameManager> {
 
     public static void GotToMainMenu() {
         State = GameState.MainMenu;
-        LoadGame();
-    }
-
-    public static void LoadGame() {
         Application.LoadLevel("Game");
     }
 
