@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour {
     public float MaxVerticalSpeed = 5;
 
     public float HorizontalAcceleration = 5;
+    public float DizziHorizontalAcceleration = 0.5f;
+    private float originalAcceleration;
 
     public float JumpForce;
 
@@ -28,9 +30,11 @@ public class PlayerMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         myRigidbody = GetComponent<Rigidbody2D>();
+        originalAcceleration = HorizontalAcceleration;
 	}
 
     private void TakeAwayControl(){
+        HorizontalAcceleration = DizziHorizontalAcceleration;
         HasControl = false;
         myRigidbody.constraints = RigidbodyConstraints2D.None;
         PhysicsMaterial2D material = new PhysicsMaterial2D();
@@ -41,6 +45,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void GiveBackControl(){
         HasControl = true;
+        HorizontalAcceleration = originalAcceleration;
         transform.rotation = Quaternion.identity;
         myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         PhysicsMaterial2D material = new PhysicsMaterial2D();
@@ -59,10 +64,6 @@ public class PlayerMovement : MonoBehaviour {
 
         Vector2 velocity = myRigidbody.velocity;
         Velocity = velocity;
-
-        if(!HasControl){
-            return;
-        }
 
         velocity = UpdateVelocity(velocity, inputX, inputY);
 
