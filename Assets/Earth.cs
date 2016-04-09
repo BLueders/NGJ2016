@@ -40,6 +40,7 @@ public class Earth : MonoBehaviour {
             return null;
 		GameObject tmpLeek = leek.gameObject;
 		leek = null;
+        currentWater = 0;
 		return tmpLeek;
 	}
 }

@@ -94,7 +94,7 @@ public class ThrowComponent : MonoBehaviour {
         leekRigidbody.isKinematic = false;
         holdingObject.GetComponent<BoxCollider2D>().isTrigger = false;
         LeekComponent leek = holdingObject.GetComponent<LeekComponent>();
-        if(leek){
+        if(leek != null){
             leek.IsActive = true;
             leek.owner = gameObject;
         }

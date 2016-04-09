@@ -6,7 +6,14 @@ public class LeekComponent : MonoBehaviour {
     public bool IsActive = false;
     public float Timer = 5;
 
-    public Sprite[] leekSprites;
+    public Sprite[] greenLeekSprites;
+    public Sprite[] redLeekSprites;
+
+    enum LeekType {
+        Green = 0,
+        Red = 1
+    }
+    LeekType type;
 
     SpriteRenderer spriteRenderer;
 
@@ -23,15 +30,27 @@ public class LeekComponent : MonoBehaviour {
             return _leekLevel;
         }
         set {
-            if (value < leekSprites.Length && value > _leekLevel) {
-                LevelUp();
+            if (value < greenLeekSprites.Length && value > _leekLevel) {
                 _leekLevel = value;
+                LevelUp();
             }
         }
     }
 
+    void Start(){
+        type = (LeekType) Random.Range(0,2);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if(type == LeekType.Red)
+            spriteRenderer.sprite = redLeekSprites[0];
+        else
+            spriteRenderer.sprite = greenLeekSprites[0];
+    }
+
     void LevelUp() {
-        spriteRenderer.sprite = leekSprites[_leekLevel];
+        if(type == LeekType.Red)
+            spriteRenderer.sprite = redLeekSprites[_leekLevel];
+        else
+            spriteRenderer.sprite = greenLeekSprites[_leekLevel];
         Instantiate(LevelUpAnimation, transform.position, Quaternion.identity);
     }
 
@@ -53,12 +72,15 @@ public class LeekComponent : MonoBehaviour {
     }
 
     void Explode() {
+        if(!IsActive)
+            return;
+        IsActive = false;
+        Destroy(gameObject);
         GameObject explosionObject = Instantiate<GameObject>(Explosion);
         explosionObject.transform.position = transform.position;
         explosionObject.transform.rotation = transform.rotation;
         LeekExplosion leekExplosion = explosionObject.GetComponent<LeekExplosion>();
         leekExplosion.Level = LeekLevel;
         leekExplosion.GoBoom();
-        Destroy(gameObject);
     }
 }

@@ -11,7 +11,7 @@ public class LeekLevelUpAnimation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         SpriteAnimator animator = GetComponent<SpriteAnimator>();
-        animator.PlayOneShot(GetComponent<SpriteRenderer>(), sprites, 4);
+        animator.PlayOneShot(GetComponent<SpriteRenderer>(), sprites, 8);
 	}
 	
 	// Update is called once per frame

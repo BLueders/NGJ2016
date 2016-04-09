@@ -21,6 +21,7 @@ public class SpriteAnimator : MonoBehaviour {
         currentRenderer = spriteRenderer;
         currentSprite = 0;
         timeSinceLastSprite = 0;
+
     }
 
     void Update(){
