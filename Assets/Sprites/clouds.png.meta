@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: 526af9b6cbb774435b061f1079d0c5b0
+timeCreated: 1460239043
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: clouds_0
+    21300002: clouds_1
+    21300004: clouds_2
+    21300006: clouds_3
+    21300008: clouds_4
+    21300010: clouds_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: clouds_0
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 507
+        width: 279
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 116.5, y: 52.5}
+        - {x: 64.5, y: 58.5}
+        - {x: -76.5, y: 58.5}
+        - {x: -139.5, y: 10.5}
+        - {x: -139.5, y: -31.5}
+        - {x: -131.5, y: -43.5}
+        - {x: -71.5, y: -53.5}
+        - {x: -42.5, y: -58.5}
+        - {x: 52.5, y: -58.5}
+        - {x: 126.5, y: -43.5}
+        - {x: 139.5, y: -36.5}
+        - {x: 139.5, y: 14.5}
+    - name: clouds_1
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 524
+        width: 257
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -48.5, y: 42}
+        - {x: -74.5, y: 35}
+        - {x: -127.5, y: 17}
+        - {x: -128.5, y: 16}
+        - {x: -128.5, y: -42}
+        - {x: 119.5, y: -42}
+        - {x: 128.5, y: -28}
+        - {x: 128.5, y: 6}
+        - {x: 32.5, y: 42}
+    - name: clouds_2
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 318
+        width: 258
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 66, y: 45.5}
+        - {x: -115, y: 45.5}
+        - {x: -129, y: 27.5}
+        - {x: -129, y: -45.5}
+        - {x: 129, y: -45.5}
+        - {x: 129, y: 30.5}
+        - {x: 110, y: 36.5}
+    - name: clouds_3
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 281
+        width: 276
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 129, y: 32.5}
+        - {x: 66, y: 71.5}
+        - {x: -5, y: 71.5}
+        - {x: -126, y: 20.5}
+        - {x: -138, y: -0.5}
+        - {x: -138, y: -43.5}
+        - {x: -130, y: -65.5}
+        - {x: -82, y: -71.5}
+        - {x: 21, y: -71.5}
+        - {x: 137, y: -43.5}
+        - {x: 138, y: -36.5}
+        - {x: 138, y: 14.5}
+    - name: clouds_4
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 148
+        width: 153
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -76.5, y: 39.5}
+        - {x: -76.5, y: -23.5}
+        - {x: -38.5, y: -39.5}
+        - {x: 64.5, y: -39.5}
+        - {x: 76.5, y: -24.5}
+        - {x: 76.5, y: 39.5}
+    - name: clouds_5
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 147
+        width: 153
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 65.5, y: 24.5}
+        - {x: 27.5, y: 34.5}
+        - {x: -63.5, y: 34.5}
+        - {x: -76.5, y: 18.5}
+        - {x: -76.5, y: -19.5}
+        - {x: -22.5, y: -34.5}
+        - {x: 62.5, y: -34.5}
+        - {x: 76.5, y: -17.5}
+        - {x: 76.5, y: 11.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

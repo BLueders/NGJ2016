@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0508ef56ef9d44215bff0e376a8d332d
-timeCreated: 1460230453
+timeCreated: 1460237660
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -19,6 +19,8 @@ TextureImporter:
     21300024: spritesheet_randomstuff_12
     21300026: spritesheet_randomstuff_13
     21300028: spritesheet_randomstuff_14
+    21300030: spritesheet_randomstuff_15
+    21300032: spritesheet_randomstuff_16
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -89,7 +91,7 @@ TextureImporter:
         width: 53
         height: 26
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: spritesheet_randomstuff_2
@@ -104,6 +106,22 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: spritesheet_randomstuff_3
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 172
+        width: 41
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.5, y: 43.5}
+        - {x: -20.5, y: -43.5}
+        - {x: 20.5, y: -43.5}
+        - {x: 20.5, y: 42.5}
+        - {x: 18.5, y: 43.5}
+    - name: spritesheet_randomstuff_4
       rect:
         serializedVersion: 2
         x: 13
@@ -123,7 +141,7 @@ TextureImporter:
         - {x: 23.5, y: -12}
         - {x: 23.5, y: 17}
         - {x: 22.5, y: 18}
-    - name: spritesheet_randomstuff_4
+    - name: spritesheet_randomstuff_5
       rect:
         serializedVersion: 2
         x: 84
@@ -140,7 +158,24 @@ TextureImporter:
         - {x: 23.5, y: -11}
         - {x: 23.5, y: 15}
         - {x: 20.5, y: 18}
-    - name: spritesheet_randomstuff_5
+    - name: spritesheet_randomstuff_6
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 177
+        width: 36
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 17.5}
+        - {x: -18, y: -6.5}
+        - {x: -8, y: -17.5}
+        - {x: 5, y: -17.5}
+        - {x: 18, y: -11.5}
+        - {x: 18, y: 17.5}
+    - name: spritesheet_randomstuff_7
       rect:
         serializedVersion: 2
         x: 2
@@ -171,7 +206,7 @@ TextureImporter:
         - {x: -24, y: -8.5}
         - {x: 24, y: -8.5}
         - {x: 24, y: 32.5}
-    - name: spritesheet_randomstuff_6
+    - name: spritesheet_randomstuff_8
       rect:
         serializedVersion: 2
         x: 80
@@ -182,7 +217,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: spritesheet_randomstuff_7
+    - name: spritesheet_randomstuff_9
       rect:
         serializedVersion: 2
         x: 80
@@ -199,7 +234,7 @@ TextureImporter:
         - {x: 19.5, y: -19.5}
         - {x: 21.5, y: -10.5}
         - {x: 21.5, y: 19.5}
-    - name: spritesheet_randomstuff_8
+    - name: spritesheet_randomstuff_10
       rect:
         serializedVersion: 2
         x: 87
@@ -210,7 +245,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: spritesheet_randomstuff_9
+    - name: spritesheet_randomstuff_11
       rect:
         serializedVersion: 2
         x: 152
@@ -221,7 +256,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: spritesheet_randomstuff_10
+    - name: spritesheet_randomstuff_12
       rect:
         serializedVersion: 2
         x: 155
@@ -239,7 +274,7 @@ TextureImporter:
         - {x: 19.5, y: -16.5}
         - {x: 19.5, y: 16.5}
         - {x: 17.5, y: 19.5}
-    - name: spritesheet_randomstuff_11
+    - name: spritesheet_randomstuff_13
       rect:
         serializedVersion: 2
         x: 156
@@ -250,7 +285,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: spritesheet_randomstuff_12
+    - name: spritesheet_randomstuff_14
       rect:
         serializedVersion: 2
         x: 158
@@ -261,7 +296,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: spritesheet_randomstuff_13
+    - name: spritesheet_randomstuff_15
       rect:
         serializedVersion: 2
         x: 163
@@ -272,7 +307,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: spritesheet_randomstuff_14
+    - name: spritesheet_randomstuff_16
       rect:
         serializedVersion: 2
         x: 220
