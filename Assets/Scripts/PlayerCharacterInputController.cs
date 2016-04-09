@@ -45,8 +45,8 @@ public class PlayerCharacterInputController : MonoBehaviour
 
     void Update()
     {
-        if(inputDevice == null){
-            ErrorHelper.DisplayError(ErrorMessage.PlayerDisconnected[PlayerID]);
+        if(inputDevice == null || !inputDevice.IsAttached){
+            ErrorHelper.DisplayError("Player " + PlayerID + " has no controller connected");
             AttachInputDevice(playerCharacterActions);
         }
 

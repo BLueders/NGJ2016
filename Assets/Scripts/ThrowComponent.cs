@@ -85,8 +85,11 @@ public class ThrowComponent : MonoBehaviour {
     void Throw() {
         if (holdingObject == null || !canThrow)
             return;
-        holdingObject.GetComponent<Rigidbody2D>().velocity = ThrowDirection.normalized * movement.Direction * ThrowForce + movement.Velocity;
-        holdingObject.GetComponent<Rigidbody2D>().isKinematic = false;
+        Rigidbody2D leekRigidbody = holdingObject.GetComponent<Rigidbody2D>();
+        Vector3 throwVelocity = ThrowDirection.normalized * ThrowForce + movement.Velocity;
+        throwVelocity.x *= movement.Direction;
+        leekRigidbody.velocity = throwVelocity;
+        leekRigidbody.isKinematic = false;
         holdingObject.GetComponent<BoxCollider2D>().isTrigger = false;
         LeekComponent leek = holdingObject.GetComponent<LeekComponent>();
         if(leek){

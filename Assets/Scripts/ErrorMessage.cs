@@ -4,5 +4,12 @@ using InControl;
 
 class ErrorMessage
 {
-    public static string[] PlayerDisconnected = new string[] {"Player 1 controller disconnected", "Player 2 controller disconnected"};
+    public float Timer;
+    public string Message;
+
+    public ErrorMessage(float time, string message){
+        Timer = time;
+        Message = message;
+    }
+
 }
