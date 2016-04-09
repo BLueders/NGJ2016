@@ -23,6 +23,11 @@ public class PlayerMovement : MonoBehaviour {
 	public int Direction = 1;
 	public GameObject spritePivot;
 
+	public Animator anim1;
+	public Animator anim2;
+
+	private Animator anim;
+
     private bool HasControl = true;
 
     private float noControlTime = 2;
@@ -31,6 +36,15 @@ public class PlayerMovement : MonoBehaviour {
 	void Start () {
         myRigidbody = GetComponent<Rigidbody2D>();
         originalAcceleration = HorizontalAcceleration;
+		int playerId = GetComponent<PlayerCharacterInputController> ().PlayerID;
+		if (playerId == 0) {
+			anim2.gameObject.SetActive (false);
+			anim = anim1;
+		}
+		if (playerId == 1) {
+			anim1.gameObject.SetActive (false);
+			anim = anim2;
+		}
 	}
 
     private void TakeAwayControl(){
@@ -67,7 +81,9 @@ public class PlayerMovement : MonoBehaviour {
 
         velocity = UpdateVelocity(velocity, inputX, inputY);
 
+		anim.SetInteger ("State", 0);
 		if (inputX != 0) {
+			anim.SetInteger ("State", 1);
 			Direction = inputX > 0 ? 1 : -1;
 		}
 		spritePivot.transform.localScale = new Vector2 (Direction,spritePivot.transform.localScale.y);
