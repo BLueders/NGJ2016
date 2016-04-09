@@ -18,14 +18,42 @@ public class PlayerMovement : MonoBehaviour {
     private Vector2 Velocity;
     private bool grounded = true;
     private Rigidbody2D myRigidbody;
-	public int direction = 1;
+	public int Direction = 1;
 	public GameObject spritePivot;
+
+    private bool HasControl = true;
+
+    private float noControlTime = 2;
 
 	// Use this for initialization
 	void Start () {
         myRigidbody = GetComponent<Rigidbody2D>();
 	}
-	
+
+    private void TakeAwayControl(){
+        HasControl = false;
+        myRigidbody.constraints = RigidbodyConstraints2D.None;
+        PhysicsMaterial2D material = new PhysicsMaterial2D();
+        material.bounciness = 0.9f;
+        material.friction = 0;
+        GetComponent<Collider2D>().sharedMaterial = material;
+    }
+
+    private void GiveBackControl(){
+        HasControl = true;
+        transform.rotation = Quaternion.identity;
+        myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        PhysicsMaterial2D material = new PhysicsMaterial2D();
+        material.bounciness = 0;
+        material.friction = 0;
+        GetComponent<Collider2D>().sharedMaterial = material;
+    }
+
+    private IEnumerator NoControlTimer(){
+        yield return new WaitForSeconds(noControlTime);
+        GiveBackControl();
+    }
+
 	// Update is called once per frame
     public void Move (float inputX, float inputY, bool inputJump) {
 
@@ -34,9 +62,9 @@ public class PlayerMovement : MonoBehaviour {
         velocity = UpdateVelocity(velocity, inputX, inputY);
 
 		if (inputX != 0) {
-			direction = inputX > 0 ? 1 : -1;
+			Direction = inputX > 0 ? 1 : -1;
 		}
-		spritePivot.transform.localScale = new Vector2 (direction,spritePivot.transform.localScale.y);
+		spritePivot.transform.localScale = new Vector2 (Direction,spritePivot.transform.localScale.y);
         if(inputJump && grounded){
             velocity = DoJump(velocity);
         }
@@ -48,6 +76,12 @@ public class PlayerMovement : MonoBehaviour {
 			Application.LoadLevel(Application.loadedLevel);
 		}
 	}
+
+    public void AddExternalFoce(Vector2 force){
+        TakeAwayControl();
+        myRigidbody.AddForce(force);
+        StartCoroutine(NoControlTimer());
+    }
 
     private Vector2 UpdateVelocity(Vector2 velocity, float inputX, float inputY) {
         velocity += new Vector2(inputX *HorizontalAcceleration * Time.deltaTime, 0);

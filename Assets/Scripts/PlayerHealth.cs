@@ -9,4 +9,14 @@ public class PlayerHealth : MonoBehaviour {
         return HP > 0;
     }
 
+    public void ReceiveDamage(float damage){
+        HP -= damage;
+        if(!IsAlive()){
+            DIE();
+        }
+    }
+
+    public void DIE(){
+        
+    }
 }

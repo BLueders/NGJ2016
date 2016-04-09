@@ -3,102 +3,97 @@ using System.Collections;
 
 public class ThrowComponent : MonoBehaviour {
 
-	public GameObject holdPivot;
-	public GameObject throwPivot;
-	public GameObject holdingObject;
-	public bool canThrow = true;
-	bool fire1hasBeenPressed;
-	bool fire2hasBeenPressed;
-	public GameObject leek;
+    public GameObject holdPivot;
+    public GameObject throwPivot;
+    public GameObject holdingObject;
+    public bool canThrow = true;
+    bool fire1hasBeenPressed;
+    bool fire2hasBeenPressed;
+    public GameObject leek;
 
-	// Use this for initialization
-	void Start () {
+    public Vector2 ThrowDirection;
+    public float ThrowForce;
+
+    // Use this for initialization
+    void Start() {
 	
-	}
-
-	public void HandleAction1(bool buttonPressed, bool buttonDown, bool buttonUp){
-		if (buttonDown && !fire1hasBeenPressed) {
-			if (canThrow) {
-				Throw ();
-			}
-			fire1hasBeenPressed = true;
-		}
     }
 
-	public void HandleAction2(bool buttonPressed, bool buttonDown,  bool buttonUp ){
-		if (buttonDown && !fire2hasBeenPressed) {
-			if (!canThrow) {
-				Drop ();
-			}
-			fire2hasBeenPressed = true;
-		}
+    public void HandleAction1(bool buttonPressed, bool buttonDown, bool buttonUp) {
+        if (buttonDown) {
+            DoAction();
+        } else if (buttonPressed) {
+            if (holdingObject != null) {
+                if (holdingObject.tag == "WaterCan") {
+                    WaterAction();
+                }
+            }
+        }
     }
 
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetButtonDown ("Fire1") && !fire1hasBeenPressed) {
-			if (canThrow) {
-				Throw ();
-			}
-			fire1hasBeenPressed = true;
-		}
-		if (Input.GetButtonDown ("Fire2") && !fire2hasBeenPressed) {
-			if (!canThrow) {
-				Drop ();
-			}
-			fire2hasBeenPressed = true;
-		}
+    public void HandleAction2(bool buttonPressed, bool buttonDown, bool buttonUp) {
+        Drop();
+    }
 
+    // Update is called once per frame
+    void Update() {
+        if (holdingObject != null) {
+            holdingObject.transform.position = holdPivot.transform.position;
+        }
+    }
 
-		if (Input.GetButtonUp ("Fire1")) {
-			fire1hasBeenPressed = false;
-		}
-		if (Input.GetButtonUp ("Fire2")) {
-			fire2hasBeenPressed = false;
-		}
-		if (holdingObject != null) {
-			holdingObject.transform.position = holdPivot.transform.position;
-		}
-	}
+    void DoAction() {
+        if (holdingObject != null) {
+            Throw();
+        } else {
+            PickUp();
+        }
+    }
 
-	void Throw() {
-		if (holdingObject == null) return;
-		holdingObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (5*GetComponent<PlayerMovement>().direction,25);
-		holdingObject.GetComponent<Rigidbody2D> ().isKinematic = false;
-		holdingObject.GetComponent<BoxCollider2D>().isTrigger = false;
-		//holdingObject.transform.parent = transform.parent;
-		holdingObject = null;
-		canThrow = false;
-	}
+    void WaterAction() {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1);
+        foreach (Collider2D col in colliders) {
+            col.gameObject.GetComponent<Earth>().WaterIt();
+        }
+    }
 
-	void Drop() {
-		if (holdingObject == null) return;
-		holdingObject.transform.parent = transform.parent;
-		holdingObject = null;
-		canThrow = false;
-	}
+    void PickUp() {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1);
+        foreach (Collider2D col in colliders) {
+            if (col.gameObject.tag == "LeekGround") {
+                holdingObject = col.gameObject.GetComponent<Earth>().HarvestLeek();
+                if(holdingObject != null) {
+                    canThrow = true;
+                }
+                break;
+            }
+            if (col.gameObject.tag == "WaterCan") {
+                holdingObject = col.gameObject;
+                canThrow = false;
+                break;
+            }
+        }
+    }
 
-	void OnTriggerStay2D(Collider2D coll) {
-		if (Input.GetButtonDown ("Fire1") && holdingObject == null && !fire1hasBeenPressed) {
-			if (coll.gameObject.tag == "LeekGround") {
-				holdingObject = coll.gameObject.GetComponent<Earth> ().HarvestLeek ();
-				canThrow = true;
-				fire1hasBeenPressed = true;
-			}
-		}
-		if (Input.GetButtonDown ("Fire2") && holdingObject == null && !fire2hasBeenPressed) {
-			if (coll.gameObject.tag == "WaterCan") {
-				holdingObject = coll.gameObject;
-				canThrow = false;
-				fire2hasBeenPressed = true;
-			}
-		}
-		if (coll.gameObject.tag == "LeekGround") {
-			if (Input.GetButtonDown ("Fire1")) {
-				if (holdingObject != null && holdingObject.tag == "WaterCan") {
-					coll.gameObject.GetComponent<Earth> ().WaterIt ();
-				}
-			}
-		}
-	}
+    void Throw() {
+        if (holdingObject == null || !canThrow)
+            return;
+        holdingObject.GetComponent<Rigidbody2D>().velocity = ThrowDirection * GetComponent<PlayerMovement>().Direction * ThrowForce;
+        holdingObject.GetComponent<Rigidbody2D>().isKinematic = false;
+        holdingObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        LeekComponent leek = holdingObject.GetComponent<LeekComponent>();
+        if(leek){
+            leek.IsActive = true;
+            leek.owner = gameObject;
+        }
+        holdingObject = null;
+        canThrow = false;
+    }
+
+    void Drop() {
+        if (holdingObject == null)
+            return;
+        holdingObject = null;
+        canThrow = false;
+    }
 }
