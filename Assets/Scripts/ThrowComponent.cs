@@ -60,8 +60,9 @@ public class ThrowComponent : MonoBehaviour {
         foreach (Collider2D col in colliders) {
             
             Earth earth = col.gameObject.GetComponent<Earth>();
-            if(earth)
+            if(earth){
                 earth.WaterIt();
+            }
         }
     }
 
@@ -93,7 +94,7 @@ public class ThrowComponent : MonoBehaviour {
         leekRigidbody.isKinematic = false;
         holdingObject.GetComponent<BoxCollider2D>().isTrigger = false;
         LeekComponent leek = holdingObject.GetComponent<LeekComponent>();
-        if(leek){
+        if(leek != null){
             leek.IsActive = true;
             leek.owner = gameObject;
         }

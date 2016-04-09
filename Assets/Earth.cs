@@ -2,57 +2,45 @@
 using System.Collections;
 
 public class Earth : MonoBehaviour {
-	int leekLifeTime = 0;
 	public bool needsWater = true;
 	public GameObject leekPrefab;
-	public GameObject leek;
-	int leekLevel;
+	public LeekComponent leek;
+
+    public float WaterPerSecond;
+    public float WaterPerLevel;
+
+    float currentWater;
+
+    Quaternion originalOrientation;
+
 	// Use this for initialization
 	void Start () {
-		StartCoroutine(UpdateCr());
+        originalOrientation = transform.rotation;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (needsWater) {
-			transform.eulerAngles = new Vector3 (0, 0, 0);
-		} else {
-			transform.eulerAngles = new Vector3 (0, 0, 45);
-		}
+		
 		//UpdateCr ();
 		//leekLifeTime++;
 	}
 
-	IEnumerator UpdateCr () {
-		while (true) {
-			yield return new WaitForSeconds (3);
-			leekLifeTime++;
-		}
-	}
-
 	public void WaterIt() {
-		if (!needsWater) return;
-		needsWater = false;
-		StartCoroutine(CoolDownWatering());
+        currentWater += WaterPerSecond * Time.deltaTime;
+        if(leek == null){
+            leek = (GameObject.Instantiate (leekPrefab, transform.localPosition+new Vector3(0,0.2f,0), Quaternion.identity) as GameObject).GetComponent<LeekComponent>();
+        }
+        leek.transform.rotation = originalOrientation * Quaternion.AngleAxis(Random.Range(-10f, 10f), Vector3.forward);
+        leek.LeekLevel = (int) (currentWater/WaterPerLevel);
+        Debug.Log(currentWater);
 	}
 
 	public GameObject HarvestLeek() {
-		GameObject tmpLeek = leek;
+        if(leek == null)
+            return null;
+		GameObject tmpLeek = leek.gameObject;
 		leek = null;
-		// Reset Earth
-		leekLevel = 0;
-		needsWater = true;
+        currentWater = 0;
 		return tmpLeek;
-	}
-
-	IEnumerator CoolDownWatering () {
-		yield return new WaitForSeconds (3);
-		if (leekLevel == 0) {
-			leek = (GameObject)(GameObject.Instantiate (leekPrefab, transform.localPosition+new Vector3(0,0.2f,0), Quaternion.identity));
-		}
-		leekLevel++;
-		leek.GetComponent<LeekComponent> ().LeekLevel++;
-		leek.transform.position = transform.localPosition + new Vector3 (0, 0.2f*leekLevel, 0);
-		needsWater = true;
 	}
 }
