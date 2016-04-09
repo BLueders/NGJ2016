@@ -16,12 +16,22 @@ public class ThrowComponent : MonoBehaviour {
 	
 	}
 
-    public void HandleAction1(bool buttonPressed, bool buttonDown){
-
+	public void HandleAction1(bool buttonPressed, bool buttonDown, bool buttonUp){
+		if (buttonDown && !fire1hasBeenPressed) {
+			if (canThrow) {
+				Throw ();
+			}
+			fire1hasBeenPressed = true;
+		}
     }
 
-    public void HandleAction2(bool buttonPressed, bool buttonDown){
-
+	public void HandleAction2(bool buttonPressed, bool buttonDown,  bool buttonUp ){
+		if (buttonDown && !fire2hasBeenPressed) {
+			if (!canThrow) {
+				Drop ();
+			}
+			fire2hasBeenPressed = true;
+		}
     }
 
 	// Update is called once per frame
@@ -71,8 +81,6 @@ public class ThrowComponent : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D coll) {
 		if (Input.GetButtonDown ("Fire1") && holdingObject == null && !fire1hasBeenPressed) {
 			if (coll.gameObject.tag == "LeekGround") {
-				//coll.gameObject.GetComponent<Earth> ().leek
-				//var inst = (GameObject)(GameObject.Instantiate (leek, throwPivot.transform.position, Quaternion.identity));
 				holdingObject = coll.gameObject.GetComponent<Earth> ().HarvestLeek ();
 				canThrow = true;
 				fire1hasBeenPressed = true;

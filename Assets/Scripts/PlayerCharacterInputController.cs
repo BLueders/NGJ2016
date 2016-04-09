@@ -100,12 +100,14 @@ public class PlayerCharacterInputController : MonoBehaviour
         // Read inputs
         bool action1Pressed = playerCharacterActions.PickUp.IsPressed;
         bool action1Down = playerCharacterActions.PickUp.WasPressed;
+		bool action1Up = playerCharacterActions.Shoot.WasReleased;
 
         bool action2Pressed = playerCharacterActions.Shoot.IsPressed;
         bool action2Down = playerCharacterActions.Shoot.WasPressed;
+		bool action2Up = playerCharacterActions.Shoot.WasReleased;
 
-        throwComponent.HandleAction1(action1Pressed, action1Down);
-        throwComponent.HandleAction2(action2Pressed, action2Down);
+		throwComponent.HandleAction1(action1Pressed, action1Down, action1Up);
+		throwComponent.HandleAction2(action2Pressed, action2Down, action2Up);
     }
 
     void OnApplicationFocus(bool hasFocus)
