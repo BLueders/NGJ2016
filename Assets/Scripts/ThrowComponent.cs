@@ -43,7 +43,9 @@ public class ThrowComponent : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (holdingObject != null) {
-            holdingObject.transform.position = holdPivot.transform.position;
+			holdingObject.transform.position = holdPivot.transform.position+Vector3.back;
+			holdingObject.transform.localScale = holdPivot.transform.lossyScale;
+			holdingObject.transform.eulerAngles = new Vector3 (0,0,0);
         }
     }
 
@@ -61,6 +63,7 @@ public class ThrowComponent : MonoBehaviour {
             
             Earth earth = col.gameObject.GetComponent<Earth>();
             if(earth){
+				holdingObject.transform.eulerAngles = new Vector3 (0,0,-45*GetComponent<PlayerMovement>().Direction);
                 earth.WaterIt();
             }
         }
