@@ -12,13 +12,13 @@ public class LeekExplosion : MonoBehaviour {
     public float Level;
 
     public void Update(){
-        DebugGizmos.DrawWireSphere(transform.position, Level * ExplosionForcePerLevel, Color.red);
+		DebugGizmos.DrawWireSphere(transform.position, Level * ExplosionRadiusPerLevel, Color.red);
     }
 
     public void GoBoom(){
-        transform.localScale = transform.localScale * Level * ExplosionForcePerLevel;
+		transform.localScale = transform.localScale * Level * ExplosionRadiusPerLevel;
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, Level * ExplosionForcePerLevel);
+		Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, Level * ExplosionRadiusPerLevel);
 
         foreach (Collider2D col in colliders){
             if(col.gameObject.tag == "Player"){
