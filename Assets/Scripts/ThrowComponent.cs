@@ -59,8 +59,9 @@ public class ThrowComponent : MonoBehaviour {
         foreach (Collider2D col in colliders) {
             
             Earth earth = col.gameObject.GetComponent<Earth>();
-            if(earth)
+            if(earth){
                 earth.WaterIt();
+            }
         }
     }
 
