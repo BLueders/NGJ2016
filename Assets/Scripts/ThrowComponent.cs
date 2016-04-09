@@ -17,7 +17,12 @@ public class ThrowComponent : MonoBehaviour {
 	}
 
     public void HandleAction1(bool buttonPressed, bool buttonDown){
-
+		if (buttonDown && fire1hasBeenPressed) {
+			if (canThrow) {
+				Throw ();
+			}
+			fire1hasBeenPressed = true;
+		}
     }
 
     public void HandleAction2(bool buttonPressed, bool buttonDown){
