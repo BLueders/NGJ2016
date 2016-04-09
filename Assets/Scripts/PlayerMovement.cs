@@ -21,19 +21,17 @@ public class PlayerMovement : MonoBehaviour {
 	public int direction = 1;
 	public GameObject spritePivot;
 
+
+
 	// Use this for initialization
 	void Start () {
         myRigidbody = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+    public void Move (float inputX, float inputY, bool inputJump) {
 
         Vector2 velocity = myRigidbody.velocity;
-
-		float inputX = Input.GetAxisRaw("Horizontal");
-		float inputY = Input.GetAxisRaw("Vertical");
-        bool inputJump = Input.GetButtonDown("Jump");
 
         velocity = UpdateVelocity(velocity, inputX, inputY);
 
