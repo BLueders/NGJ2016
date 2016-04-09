@@ -63,8 +63,9 @@ public class ThrowComponent : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D coll) {
 		if (Input.GetButtonDown ("Fire1") && holdingObject == null && !fire1hasBeenPressed) {
 			if (coll.gameObject.tag == "LeekGround") {
-				var inst = (GameObject)(GameObject.Instantiate (leek, throwPivot.transform.position, Quaternion.identity));
-				holdingObject = inst;
+				//coll.gameObject.GetComponent<Earth> ().leek
+				//var inst = (GameObject)(GameObject.Instantiate (leek, throwPivot.transform.position, Quaternion.identity));
+				holdingObject = coll.gameObject.GetComponent<Earth> ().HarvestLeek ();
 				canThrow = true;
 				fire1hasBeenPressed = true;
 			}
@@ -77,9 +78,9 @@ public class ThrowComponent : MonoBehaviour {
 			}
 		}
 		if (coll.gameObject.tag == "LeekGround") {
-			if (Input.GetButtonDown ("Fire2")) {
+			if (Input.GetButtonDown ("Fire1")) {
 				if (holdingObject != null && holdingObject.tag == "WaterCan") {
-					coll.gameObject.GetComponent<Earth>().waterAmount++;
+					coll.gameObject.GetComponent<Earth> ().WaterIt ();
 				}
 			}
 		}
