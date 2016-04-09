@@ -18,7 +18,7 @@ GameObject:
   - 114: {fileID: 11415350}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.62, y: -1.29, z: 0}
+  m_LocalPosition: {x: -3, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 461004}
@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 100
+  text: {fileID: 0}
 --- !u!114 &11415350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -244,7 +245,7 @@ MonoBehaviour:
   canThrow: 1
   leek: {fileID: 127392, guid: ddc1ffe0c55984ea0bcda25c8aad5da6, type: 2}
   ThrowDirection: {x: 1, y: 1}
-  ThrowForce: 25
+  ThrowForce: 15
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

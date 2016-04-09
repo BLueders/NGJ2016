@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExplosionForcePerLevel: 20
-  ExplosionRadiusPerLevel: 1
+  ExplosionRadiusPerLevel: 0.2
   ExplosionDamagePerLevel: 1
   Level: 0
 --- !u!1001 &100100000

@@ -23,11 +23,11 @@ public class LeekComponent : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter2D(Collider other){
+	void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject != owner){
-            if(other.tag == "Player" || other.tag == "Ground"){
-                Explode();
-            }
+			if(other.gameObject.tag == "Player" || other.gameObject.tag == "Ground"){
+				Explode();
+			}
         }
     }
 
