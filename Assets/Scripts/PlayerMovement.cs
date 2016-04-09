@@ -21,8 +21,6 @@ public class PlayerMovement : MonoBehaviour {
 	public int direction = 1;
 	public GameObject spritePivot;
 
-
-
 	// Use this for initialization
 	void Start () {
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -67,8 +65,14 @@ public class PlayerMovement : MonoBehaviour {
     }
 
 	void OnCollisionEnter2D(Collision2D coll) {
-		if (coll.gameObject.tag == "Leek") {
-			Destroy(coll.gameObject);
+		if (coll.gameObject.tag == "Ground") {
+			grounded = true;
 		}
 	}
+
+    void OnCollisionExit2D(Collision2D coll) {
+        if (coll.gameObject.tag == "Ground") {
+            grounded = false;
+        }
+    }
 }
