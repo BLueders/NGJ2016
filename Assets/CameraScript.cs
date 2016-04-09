@@ -14,10 +14,10 @@ public class CameraScript : MonoBehaviour {
 	}
 
 	void ShakeScreen() {
-		StartCoroutine (ShakeScreenCr);
+		StartCoroutine (ShakeScreenCr());
 	}
 
 	IEnumerator ShakeScreenCr() {
-		//
+		yield return null;
 	}
 }
