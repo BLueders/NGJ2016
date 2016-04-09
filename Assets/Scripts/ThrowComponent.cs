@@ -15,7 +15,15 @@ public class ThrowComponent : MonoBehaviour {
 	void Start () {
 	
 	}
-	
+
+    public void HandleAction1(bool buttonPressed, bool buttonDown){
+
+    }
+
+    public void HandleAction2(bool buttonPressed, bool buttonDown){
+
+    }
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonDown ("Fire1") && !fire1hasBeenPressed) {

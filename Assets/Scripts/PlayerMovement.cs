@@ -33,8 +33,6 @@ public class PlayerMovement : MonoBehaviour {
 
         Vector2 velocity = myRigidbody.velocity;
 
-
-
         velocity = UpdateVelocity(velocity, inputX, inputY);
 
 		if (inputX != 0) {
