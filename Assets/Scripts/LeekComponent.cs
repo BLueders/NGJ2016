@@ -8,8 +8,10 @@ public class LeekComponent : MonoBehaviour {
 
     public GameObject Explosion;
 
+    [HideInInspector]
     public GameObject owner;
 
+    [HideInInspector]
     public float LeekLevel;
 
     void Update(){
@@ -35,6 +37,7 @@ public class LeekComponent : MonoBehaviour {
         explosionObject.transform.rotation = transform.rotation;
         LeekExplosion leekExplosion = explosionObject.GetComponent<LeekExplosion>();
         leekExplosion.Level = LeekLevel;
+        leekExplosion.GoBoom();
         Destroy(gameObject);
     }
 }

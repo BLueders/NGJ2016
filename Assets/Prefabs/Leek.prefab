@@ -12,6 +12,7 @@ GameObject:
   - 23: {fileID: 2327288}
   - 61: {fileID: 6192076}
   - 50: {fileID: 5011914}
+  - 114: {fileID: 11439672}
   m_Layer: 9
   m_Name: Leek
   m_TagString: Leek
@@ -95,6 +96,22 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &11439672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c562189f8f623f642b299f16b5be9dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsActive: 0
+  Timer: 5
+  Explosion: {fileID: 143176, guid: 7546479ade37fe040be1dfab166ba246, type: 2}
+  owner: {fileID: 0}
+  LeekLevel: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

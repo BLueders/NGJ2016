@@ -7,7 +7,7 @@ public class LeekExplosion : MonoBehaviour {
     public float ExplosionRadiusPerLevel;
     public float ExplosionDamagePerLevel;
 
-
+    [HideInInspector]
     public float Level;
 
     public void GoBoom(){
