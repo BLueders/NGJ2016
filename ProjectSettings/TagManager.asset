@@ -9,6 +9,7 @@ TagManager:
   - WaterCan
   - Ground
   - MiscHoldingObject
+  - Fence
   layers:
   - Default
   - TransparentFX

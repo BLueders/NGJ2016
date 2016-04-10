@@ -122,7 +122,7 @@ public class PlayerMovement : MonoBehaviour {
         return velocity;
     }
 
-	void OnCollisionEnter2D(Collision2D coll) {
+	void OnCollisionStay2D(Collision2D coll) {
         if (coll.gameObject.tag == "Ground" || coll.gameObject.tag == "Fence") {
 			grounded = true;
 		}
