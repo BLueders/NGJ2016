@@ -21,6 +21,16 @@ public class SpriteAnimator : MonoBehaviour {
         currentRenderer = spriteRenderer;
         currentSprite = 0;
         timeSinceLastSprite = 0;
+    }
+
+    public void PlayLoop(SpriteRenderer spriteRenderer, Sprite[] sprites, float speed){
+        loop = true;
+        animate = true;
+        currentSprites = sprites;
+        animationSpeed = speed;
+        currentRenderer = spriteRenderer;
+        currentSprite = 0;
+        timeSinceLastSprite = 0;
 
     }
 

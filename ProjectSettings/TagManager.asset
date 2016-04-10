@@ -8,7 +8,7 @@ TagManager:
   - LeekGround
   - WaterCan
   - Ground
-  - New Tag
+  - MiscHoldingObject
   layers:
   - Default
   - TransparentFX
