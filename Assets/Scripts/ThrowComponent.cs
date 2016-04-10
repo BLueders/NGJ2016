@@ -5,7 +5,7 @@ public class ThrowComponent : MonoBehaviour {
 
     public GameObject holdPivot;
     public GameObject throwPivot;
-    public GameObject holdingObject;
+    public HoldingObject holdingObject;
     public bool canThrow = true;
     bool fire1hasBeenPressed;
     bool fire2hasBeenPressed;
@@ -77,7 +77,7 @@ public class ThrowComponent : MonoBehaviour {
     }
 
     void WaterAction() {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.6f);
         foreach (Collider2D col in colliders) {
             
             Earth earth = col.gameObject.GetComponent<Earth>();
@@ -89,20 +89,41 @@ public class ThrowComponent : MonoBehaviour {
     }
 
     void PickUp() {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.6f);
         foreach (Collider2D col in colliders) {
             if (col.gameObject.tag == "LeekGround") {
-                holdingObject = col.gameObject.GetComponent<Earth>().HarvestLeek();
-                if(holdingObject != null) {
+                GameObject harvest = col.gameObject.GetComponent<Earth>().HarvestLeek();
+                if(harvest != null) {
+                    holdingObject = harvest.GetComponent<HoldingObject>();
+                    holdingObject.owner = gameObject;
                     canThrow = true;
 					break;
                 }
             }
-            if (col.gameObject.tag == "WaterCan") {
-                holdingObject = col.gameObject;
+            else if (col.gameObject.tag == "WaterCan") {
+                holdingObject = col.gameObject.GetComponent<HoldingObject>();
+                if(holdingObject.owner != null && holdingObject.owner != gameObject){
+                    holdingObject.owner.GetComponent<ThrowComponent>().LooseObject(holdingObject);
+                }
+                holdingObject.owner = gameObject;
                 canThrow = false;
                 break;
             }
+            else if (col.gameObject.tag =="MiscHoldingObject"){
+                holdingObject = col.gameObject.GetComponent<HoldingObject>();
+                if(holdingObject.owner != null && holdingObject.owner != gameObject){
+                    holdingObject.owner.GetComponent<ThrowComponent>().LooseObject(holdingObject);
+                }
+                holdingObject.owner = gameObject;
+                canThrow = false;
+                break;
+            }
+        }
+    }
+
+    public void LooseObject(HoldingObject o){
+        if(holdingObject == o){
+            holdingObject = null;
         }
     }
 
@@ -130,12 +151,13 @@ public class ThrowComponent : MonoBehaviour {
     }
 
     void Drop() {
-        if (holdingObject == null || holdingObject.tag != "WaterCan")
+        if (holdingObject == null || (holdingObject.tag != "WaterCan" && holdingObject.tag != "MiscHoldingObject"))
             return;
         Rigidbody2D holdingRigidBody = holdingObject.GetComponent<Rigidbody2D>();
         if(holdingRigidBody){
-            holdingRigidBody.velocity = movement.Velocity;
+            holdingRigidBody.velocity = movement.Velocity + new Vector2(movement.Direction * 5, 4);
         }
+        holdingObject.owner = null;
         holdingObject = null;
         canThrow = false;
     }

@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 0508ef56ef9d44215bff0e376a8d332d
-timeCreated: 1460237660
-licenseType: Pro
+timeCreated: 1460246342
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: spritesheet_randomstuff_0
@@ -75,7 +75,7 @@ TextureImporter:
         width: 43
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -18.5, y: 22}
@@ -91,7 +91,7 @@ TextureImporter:
         width: 53
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: spritesheet_randomstuff_2
@@ -102,7 +102,7 @@ TextureImporter:
         width: 53
         height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: spritesheet_randomstuff_3
@@ -113,7 +113,7 @@ TextureImporter:
         width: 41
         height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -20.5, y: 43.5}
@@ -129,7 +129,7 @@ TextureImporter:
         width: 47
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -17.5, y: 18}
@@ -149,7 +149,7 @@ TextureImporter:
         width: 47
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -23.5, y: 18}
@@ -166,7 +166,7 @@ TextureImporter:
         width: 36
         height: 35
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -18, y: 17.5}
@@ -179,33 +179,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 65
+        y: 92
         width: 48
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 38
+      alignment: 9
+      pivot: {x: 0.60530525, y: 0.31194124}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -21, y: -31.5}
-        - {x: -20, y: -32.5}
-        - {x: -12, y: -32.5}
-        - {x: -14, y: -27.5}
-        - {x: -19, y: -27.5}
-        - {x: -21, y: -29.5}
-      - - {x: -23, y: -20.5}
-        - {x: -24, y: -22.5}
-        - {x: -24, y: -25.5}
-        - {x: -23, y: -26.5}
-        - {x: -20, y: -27.5}
-        - {x: -15, y: -27.5}
-        - {x: -14, y: -25.5}
-        - {x: -14, y: -21.5}
-        - {x: -17, y: -20.5}
-      - - {x: -11, y: 32.5}
-        - {x: -24, y: 16.5}
-        - {x: -24, y: -8.5}
-        - {x: 24, y: -8.5}
-        - {x: 24, y: 32.5}
+      - - {x: -18.054653, y: 26.146233}
+        - {x: -29.054653, y: 14.146233}
+        - {x: -29.054653, y: -11.853767}
+        - {x: 15.945347, y: -11.853767}
+        - {x: 18.945347, y: 1.1462326}
+        - {x: 18.945347, y: 26.146233}
     - name: spritesheet_randomstuff_8
       rect:
         serializedVersion: 2
@@ -214,26 +200,25 @@ TextureImporter:
         width: 5
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: spritesheet_randomstuff_9
       rect:
         serializedVersion: 2
         x: 80
-        y: 91
+        y: 92
         width: 43
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 38
+      alignment: 9
+      pivot: {x: 0.55674815, y: 0.30735436}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -8.5, y: 19.5}
-        - {x: -21.5, y: 4.5}
-        - {x: -21.5, y: -19.5}
-        - {x: 19.5, y: -19.5}
-        - {x: 21.5, y: -10.5}
-        - {x: 21.5, y: 19.5}
+      - - {x: -10.94017, y: 26.320534}
+        - {x: -23.94017, y: 11.320534}
+        - {x: -23.94017, y: -11.679466}
+        - {x: 19.05983, y: -11.679466}
+        - {x: 19.05983, y: 26.320534}
     - name: spritesheet_randomstuff_10
       rect:
         serializedVersion: 2
@@ -242,7 +227,7 @@ TextureImporter:
         width: 5
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: spritesheet_randomstuff_11
@@ -253,27 +238,29 @@ TextureImporter:
         width: 4
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: spritesheet_randomstuff_12
       rect:
         serializedVersion: 2
-        x: 155
-        y: 91
-        width: 39
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 151
+        y: 92
+        width: 43
+        height: 38
+      alignment: 9
+      pivot: {x: 0.5526946, y: 0.31194124}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -10.5, y: 19.5}
-        - {x: -19.5, y: 11.5}
-        - {x: -19.5, y: -19.5}
-        - {x: 18.5, y: -19.5}
-        - {x: 19.5, y: -16.5}
-        - {x: 19.5, y: 16.5}
-        - {x: 17.5, y: 19.5}
+      - - {x: -13.765869, y: 26.146233}
+        - {x: -21.76587, y: 9.146233}
+        - {x: -21.76587, y: -3.8537674}
+        - {x: -18.76587, y: -7.8537674}
+        - {x: -14.765869, y: -11.853767}
+        - {x: 16.23413, y: -11.853767}
+        - {x: 17.23413, y: -1.8537674}
+        - {x: 19.23413, y: 4.1462326}
+        - {x: 19.23413, y: 26.146233}
     - name: spritesheet_randomstuff_13
       rect:
         serializedVersion: 2
@@ -282,7 +269,7 @@ TextureImporter:
         width: 4
         height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: spritesheet_randomstuff_14
@@ -293,7 +280,7 @@ TextureImporter:
         width: 5
         height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: spritesheet_randomstuff_15
@@ -304,47 +291,25 @@ TextureImporter:
         width: 4
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: spritesheet_randomstuff_16
       rect:
         serializedVersion: 2
-        x: 220
-        y: 55
-        width: 46
-        height: 75
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 223
+        y: 92
+        width: 43
+        height: 38
+      alignment: 9
+      pivot: {x: 0.5483441, y: 0.31484464}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -7, y: -27.5}
-        - {x: -9, y: -29.5}
-        - {x: -10, y: -32.5}
-        - {x: -10, y: -31.5}
-        - {x: -9, y: -28.5}
-        - {x: -5, y: -24.5}
-        - {x: -15, y: -14.5}
-        - {x: -23, y: -14.5}
-        - {x: -23, y: -26.5}
-        - {x: -20, y: -27.5}
-        - {x: -17, y: -27.5}
-        - {x: -19, y: -27.5}
-        - {x: -21, y: -29.5}
-        - {x: -21, y: -30.5}
-        - {x: -15, y: -37.5}
-        - {x: -4, y: -37.5}
-        - {x: -2, y: -35.5}
-        - {x: -2, y: -30.5}
-        - {x: -4, y: -26.5}
-      - - {x: -15, y: 37.5}
-        - {x: -22, y: 31.5}
-        - {x: -22, y: 6.5}
-        - {x: -20, y: 0.5}
-        - {x: -10, y: -3.5}
-        - {x: 17, y: -3.5}
-        - {x: 23, y: -2.5}
-        - {x: 23, y: 37.5}
+      - - {x: -10.578796, y: 26.035904}
+        - {x: -23.578796, y: 11.035904}
+        - {x: -23.578796, y: -11.964096}
+        - {x: 19.421204, y: -11.964096}
+        - {x: 19.421204, y: 26.035904}
     outline: []
   spritePackingTag: 
   userData: 
