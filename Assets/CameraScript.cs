@@ -7,7 +7,6 @@ public class CameraScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		originalOrientation = transform.rotation;
-		ShakeScreen ();
 	}
 	
 	// Update is called once per frame
@@ -15,7 +14,7 @@ public class CameraScript : MonoBehaviour {
 	
 	}
 
-	void ShakeScreen() {
+	public void ShakeScreen() {
 		StartCoroutine (ShakeScreenCr());
 	}
 

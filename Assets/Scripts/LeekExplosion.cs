@@ -26,6 +26,7 @@ public class LeekExplosion : MonoBehaviour {
         }
 
         SpriteAnimator animator = GetComponent<SpriteAnimator>();
+		GameManager.Instance.MainCameraScript.ShakeScreen ();
 		GameManager.Instance.SoundManager.PlaySound (GameManager.Instance.SoundManager.explosion);
         animator.PlayOneShot(GetComponent<SpriteRenderer>(), sprites, 8);
 
