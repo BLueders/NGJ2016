@@ -44,7 +44,7 @@ GameObject:
   - 114: {fileID: 11463432}
   - 82: {fileID: 8215512}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: SoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -837,6 +837,7 @@ MonoBehaviour:
   Player1WinsScreen: {fileID: 199362}
   Player2WinsScreen: {fileID: 198408}
   SoundManager: {fileID: 11463432}
+  MainCameraScript: {fileID: 0}
 --- !u!222 &22218152
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -9,6 +9,7 @@ public class GameManager : Singleton<GameManager> {
     public GameObject Player1WinsScreen;
     public GameObject Player2WinsScreen;
 	public SoundManager SoundManager;
+	public CameraScript MainCameraScript;
 
     PlayerCharacterActions actions;
 
