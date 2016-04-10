@@ -147,6 +147,7 @@ public class ThrowComponent : MonoBehaviour {
         }
         holdingObject = null;
         canThrow = false;
+		GameManager.Instance.SoundManager.PlaySound (GameManager.Instance.SoundManager.throwSound);
         currentThrowCharge = InitialThrowCharge;
     }
 
