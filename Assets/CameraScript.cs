@@ -21,7 +21,7 @@ public class CameraScript : MonoBehaviour {
 	IEnumerator ShakeScreenCr() {
 		int i = 0;
 		while (i<20) {
-			transform.rotation = originalOrientation * Quaternion.AngleAxis(Random.Range(-3f, 3f), Vector3.forward);
+			transform.rotation = originalOrientation * Quaternion.AngleAxis(Random.Range(-2f, 2f), Vector3.forward);
 			i++;
 			yield return new WaitForSeconds(0.01f);
 		}

@@ -31,6 +31,11 @@ public class ThrowComponent : MonoBehaviour {
     }
 
     public void HandleAction1(bool buttonPressed, bool buttonDown, bool buttonUp) {
+
+        if(holdingObject != null){
+            holdingObject.transform.rotation = Quaternion.identity;
+        }
+
         movement.CurrentMaxHorizontalSpeed = movement.MaxVerticalSpeed; 
         if (buttonDown) {
             if (holdingObject == null) {
@@ -72,7 +77,6 @@ public class ThrowComponent : MonoBehaviour {
         if (holdingObject != null) {
 			holdingObject.transform.position = holdPivot.transform.position+Vector3.back;
 			holdingObject.transform.localScale = holdPivot.transform.lossyScale;
-			holdingObject.transform.eulerAngles = new Vector3 (0,0,0);
         }
     }
 
