@@ -111,6 +111,7 @@ public class ThrowComponent : MonoBehaviour {
             }
             else if (col.gameObject.tag =="MiscHoldingObject"){
                 holdingObject = col.gameObject.GetComponent<HoldingObject>();
+				GameManager.Instance.SoundManager.PlaySound (GameManager.Instance.SoundManager.chickenSound);
                 if(holdingObject.owner != null && holdingObject.owner != gameObject){
                     holdingObject.owner.GetComponent<ThrowComponent>().LooseObject(holdingObject);
                 }
