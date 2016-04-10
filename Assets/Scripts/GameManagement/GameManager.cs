@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager> {
     public GameObject PauseGameMenu;
     public GameObject Player1WinsScreen;
     public GameObject Player2WinsScreen;
+	public SoundManager SoundManager;
 
     PlayerCharacterActions actions;
 
